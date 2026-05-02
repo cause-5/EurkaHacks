@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "required": ["skill", "level", "estimated_total_time_hours", "days"],
+  "properties": {
+    "skill": { "type": "string" },
+    "level": { "type": "string" },
+    "estimated_total_time_hours": { "type": "number" },
+    "days": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "required": ["day", "title", "goal", "tasks", "resources", "estimated_time_minutes"],
+        "properties": {
+          "day": { "type": "number" },
+          "title": { "type": "string" },
+          "goal": { "type": "string" },
+          "tasks": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "string" }
+          },
+          "resources": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["type", "title", "url", "reason"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": ["video", "article"]
+                },
+                "title": { "type": "string" },
+                "url": { "type": "string" },
+                "reason": { "type": "string" }
+              }
+            }
+          },
+          "estimated_time_minutes": { "type": "number" }
+        }
+      }
+    }
+  }
+}
